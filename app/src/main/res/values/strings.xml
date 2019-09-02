@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ListenEverything</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tmt_explain">Urutkan dari angka terkecil ke terbesar..!!</string>
+    <string name="tmt_explain2">Urutkan 1 -> A -> 2 -> B dan seterusnya..!!</string>
+</resources>

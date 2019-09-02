@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".TMTActivity"
+        android:orientation="vertical">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="horizontal">
+        <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:layout_weight="1" android:id="@+id/txt_name" android:hint="Nama"/>
+        <Button android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="START" android:id="@+id/start_button_tmt" android:onClick="onClickedStartButtonTMT" android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/fragment_tmt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+</LinearLayout>

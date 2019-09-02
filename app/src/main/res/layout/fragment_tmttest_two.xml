@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+              android:orientation="vertical"
+             tools:context=".TMTTestTwo">
+
+    <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
+                                                 android:layout_height="match_parent"
+    android:layout_weight="1">
+
+        <Button
+                android:id="@+id/aa_test"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="98dp"
+                android:layout_marginEnd="21dp"
+                android:background="@drawable/oval_button"
+                android:contentDescription="It's a button, ha za"
+                android:text="1"
+                app:layout_constraintEnd_toStartOf="@+id/dd_test"
+                app:layout_constraintTop_toBottomOf="@+id/bb_test" />
+
+        <Button
+                android:id="@+id/bb_test"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="153dp"
+                android:background="@drawable/oval_button"
+                android:contentDescription="It's a button, ha za"
+                android:text="A"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <Button
+                android:id="@+id/cc_test"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="91dp"
+                android:layout_marginEnd="38dp"
+                android:background="@drawable/oval_button"
+                android:contentDescription="It's a button, ha za"
+                android:text="2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/next_test_two" />
+
+        <Button
+                android:id="@+id/dd_test"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="179dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/oval_button"
+                android:contentDescription="It's a button, ha za"
+                android:text="B"
+                app:layout_constraintEnd_toStartOf="@+id/cc_test"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+                android:id="@+id/ee_test"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="49dp"
+                android:layout_marginEnd="70dp"
+                android:background="@drawable/oval_button"
+                android:contentDescription="It's a button, ha za"
+                android:text="3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dd_test" />
+
+        <Button
+                android:id="@+id/ff_test"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="80dp"
+                android:layout_marginEnd="43dp"
+                android:background="@drawable/oval_button"
+                android:contentDescription="It's a button, ha za"
+                android:text="C"
+                app:layout_constraintEnd_toStartOf="@+id/aa_test"
+                app:layout_constraintTop_toBottomOf="@+id/hh_test" />
+
+        <Button
+                android:id="@+id/gg_test"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="98dp"
+                android:layout_marginEnd="49dp"
+                android:background="@drawable/oval_button"
+                android:contentDescription="It's a button, ha za"
+                android:text="4"
+                app:layout_constraintEnd_toStartOf="@+id/hh_test"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <Button
+                android:id="@+id/hh_test"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="98dp"
+                android:layout_marginEnd="158dp"
+                android:background="@drawable/oval_button"
+                android:contentDescription="It's a button, ha za"
+                android:text="D"
+                app:layout_constraintEnd_toStartOf="@+id/cc_test"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <Button
+                android:id="@+id/next_test_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                android:text="Next"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.026" />
+
+        <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tmt_explain2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" android:textColor="#000000"/>
+
+    </android.support.constraint.ConstraintLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="bottom">
+        <ProgressBar android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:padding="10dp"
+                     android:layout_margin="16dp"
+                     style="?android:attr/progressBarStyleHorizontal"
+                     android:id="@+id/progressBarTMTTestTwo"
+        />
+
+    </LinearLayout>
+
+</LinearLayout>
