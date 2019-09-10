@@ -99,6 +99,8 @@ class LocalStorage{
                     fileWriter.append(item.timestampString.toString())
                     fileWriter.append(',')
                     fileWriter.append(item.value.toString())
+                    fileWriter.append(',')
+                    fileWriter.append(item.testCode.toString())
                     fileWriter.append('\n')
                 }
 

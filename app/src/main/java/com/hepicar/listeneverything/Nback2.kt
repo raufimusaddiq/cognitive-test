@@ -3,6 +3,7 @@ package com.hepicar.listeneverything
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
+import android.os.Parcelable
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -27,13 +28,15 @@ class NBack2 : Fragment() {
     companion object {
         const val NAME = "name"
         const val STATE = "state"
+        const val LIST = "list"
 
-        fun newInstance(name: String, state : String): NBack2 {
+        fun newInstance(name: String, state : String, dataList: MutableList<NBack>): NBack2 {
             val fragment = NBack2()
 
             val bundle = Bundle().apply {
                 putString(NAME, name)
                 putString(STATE, state)
+                putParcelableArrayList(LIST, dataList as ArrayList<out Parcelable>?)
             }
             fragment.arguments = bundle
             return fragment
@@ -46,13 +49,13 @@ class NBack2 : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view:View = inflater.inflate(R.layout.fragment_nback2, container, false)
-        val nama = arguments?.getString(TMTOne.NAME).toString()
-        val state = arguments?.getString(TMTOne.STATE).toString()
+        val nama = arguments?.getString(NAME).toString()
+        val state = arguments?.getString(STATE).toString()
         Calculate(view, nama, state)
         return view
     }
 
-    var NBackData : MutableList<NBack> = ArrayList()
+    var NBackData : MutableList<NBack> = arguments?.getParcelableArrayList<NBack>(LIST)!!.toMutableList()
 
     private fun Calculate(view:View, name: String, state: String){
 
@@ -73,6 +76,7 @@ class NBack2 : Fragment() {
             if(counter < 2){
                 counter++
                 txtNBack2.text = Nback_Task[counter]
+                NBackAddData(System.currentTimeMillis(), 0, 2)
             } else {
                 val temp = txtNBack2.text
                 if (temp == Nback_Task[counter - 2]) {
@@ -80,22 +84,22 @@ class NBack2 : Fragment() {
                     right_counter++
                     counter++
                     txtRight2.text = "Jumlah Benar : $right_counter"
-                    NBackAddData(System.currentTimeMillis(), 1)
+                    NBackAddData(System.currentTimeMillis(), 1, 2)
                 } else {
                     //TODO : Simpan Salah
                     counter++
-                    NBackAddData(System.currentTimeMillis(), -1)
+                    NBackAddData(System.currentTimeMillis(), -1, 2)
                 }
             }
             if(counter == Nback_Task.size){
                 //TODO : Fragment Selanjutnya
-                if(state == "0"){
-                    LocalStorage.saveToCSVNBack(NBackData, "nback2_training", name)
-                } else{
-                    LocalStorage.saveToCSVNBack(NBackData, "nback2_$state", name)
-                }
-                NBackData.clear()
-                activity!!.supportFragmentManager.beginTransaction().replace(R.id.fragment_nback, NBack3.newInstance(name, state)).commit()
+//                if(state == "0"){
+//                    LocalStorage.saveToCSVNBack(NBackData, "nback2_training", name)
+//                } else{
+//                    LocalStorage.saveToCSVNBack(NBackData, "nback2_$state", name)
+//                }
+//                NBackData.clear()
+                activity!!.supportFragmentManager.beginTransaction().replace(R.id.fragment_nback, NBack3.newInstance(name, state, NBackData)).commit()
             } else {
                 txtNBack2.text = Nback_Task[counter]
             }
@@ -105,6 +109,7 @@ class NBack2 : Fragment() {
             if(counter < 2){
                 counter++
                 txtNBack2.text = Nback_Task[counter]
+                NBackAddData(System.currentTimeMillis(), 0, 2)
             } else {
                 val temp = txtNBack2.text
                 if (temp != Nback_Task[counter - 2]) {
@@ -112,31 +117,32 @@ class NBack2 : Fragment() {
                     right_counter++
                     counter++
                     txtRight2.text = "Jumlah Benar : $right_counter"
-                    NBackAddData(System.currentTimeMillis(), 1)
+                    NBackAddData(System.currentTimeMillis(), 1, 2)
                 } else {
                     //TODO : Simpan Salah
                     counter++
-                    NBackAddData(System.currentTimeMillis(), -1)
+                    NBackAddData(System.currentTimeMillis(), -1, 2)
                 }
             }
             if(counter == Nback_Task.size){
-                //TODO : Fragment Selanjutnya
-                if(state == "0"){
-                    LocalStorage.saveToCSVNBack(NBackData, "nback2_training", name)
-                } else{
-                    LocalStorage.saveToCSVNBack(NBackData, "nback2_$state", name)
-                }
-                NBackData.clear()
-                activity!!.supportFragmentManager.beginTransaction().replace(R.id.fragment_nback, NBack3.newInstance(name, state)).commit()
+//                //TODO : Fragment Selanjutnya
+//                if(state == "0"){
+//                    LocalStorage.saveToCSVNBack(NBackData, "nback2_training", name)
+//                } else{
+//                    LocalStorage.saveToCSVNBack(NBackData, "nback2_$state", name)
+//                }
+//                NBackData.clear()
+                activity!!.supportFragmentManager.beginTransaction().replace(R.id.fragment_nback, NBack3.newInstance(name, state, NBackData)).commit()
             } else {
                 txtNBack2.text = Nback_Task[counter]
             }
         }
     }
 
-    private fun NBackAddData(timestamp: Long, data: Int){
+    private fun NBackAddData(timestamp: Long, data: Int, testCode: Int){
         var nback = NBack(timestamp)
         nback.value = data
+        nback.testCode = testCode
         NBackData.add(nback)
     }
 }
