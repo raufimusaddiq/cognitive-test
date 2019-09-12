@@ -73,6 +73,7 @@ class NBack2 : Fragment() {
             if(counter < 2){
                 counter++
                 txtNBack2.text = Nback_Task[counter]
+                NBackAddData(System.currentTimeMillis(), 0)
             } else {
                 val temp = txtNBack2.text
                 if (temp == Nback_Task[counter - 2]) {
@@ -105,6 +106,7 @@ class NBack2 : Fragment() {
             if(counter < 2){
                 counter++
                 txtNBack2.text = Nback_Task[counter]
+                NBackAddData(System.currentTimeMillis(), 0)
             } else {
                 val temp = txtNBack2.text
                 if (temp != Nback_Task[counter - 2]) {
