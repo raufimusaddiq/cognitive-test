@@ -11,7 +11,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Tenagnkan Diri Anda"
+            android:text="Tenangkan Diri Anda"
             android:padding="10dp"
             android:layout_margin="8dp"
             android:textColor="@android:color/black"
