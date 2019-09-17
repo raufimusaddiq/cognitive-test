@@ -46,8 +46,8 @@ class NBack1 : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         var view:View = inflater!!.inflate(R.layout.fragment_nback1, container, false)
-        val nama = arguments?.getString(TMTOne.NAME).toString()
-        val state = arguments?.getString(TMTOne.STATE).toString()
+        val nama = arguments?.getString(NAME).toString()
+        val state = arguments?.getString(STATE).toString()
         Calculate(view, nama, state)
         return view
     }
@@ -96,7 +96,7 @@ class NBack1 : Fragment() {
                     LocalStorage.saveToCSVNBack(NBackData, "nback1_$state", name)
                 }
                 NBackData.clear()
-                activity!!.supportFragmentManager.beginTransaction().replace(R.id.fragment_nback, NBack2.newInstance(name, state)).commit()
+                activity!!.supportFragmentManager.beginTransaction().replace(R.id.fragment_nback, States.newInstance(name, state, "1")).commit()
             } else {
                 txtNBack.text = Nback_Task[counter]
             }
@@ -130,7 +130,7 @@ class NBack1 : Fragment() {
                     LocalStorage.saveToCSVNBack(NBackData, "nback1_$state", name)
                 }
                 NBackData.clear()
-                activity!!.supportFragmentManager.beginTransaction().replace(R.id.fragment_nback, NBack2.newInstance(name, state)).commit()
+                activity!!.supportFragmentManager.beginTransaction().replace(R.id.fragment_nback, States.newInstance(name, state, "1")).commit()
             } else {
                 txtNBack.text = Nback_Task[counter]
             }

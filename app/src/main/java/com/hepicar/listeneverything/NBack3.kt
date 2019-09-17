@@ -47,8 +47,8 @@ class NBack3 : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view:View = inflater!!.inflate(R.layout.fragment_nback3, container, false)
-        val nama = arguments?.getString(TMTOne.NAME).toString()
-        val state = arguments?.getString(TMTOne.STATE).toString()
+        val nama = arguments?.getString(NAME).toString()
+        val state = arguments?.getString(STATE).toString()
         Calculate(view, nama, state)
         return view
     }
