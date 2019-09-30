@@ -80,11 +80,11 @@ class NBack1 : Fragment() {
                     right_counter++
                     counter++
                     txtRight.text = "Jumlah Benar : $right_counter"
-                    NBackAddData(System.currentTimeMillis(), 1)
+                    NBackAddData(System.currentTimeMillis(), 1, 1)
                 } else {
                     //TODO : Simpan Salah
                     counter++
-                    NBackAddData(System.currentTimeMillis(), -1)
+                    NBackAddData(System.currentTimeMillis(), -1, 1)
                 }
             }
 
@@ -114,11 +114,11 @@ class NBack1 : Fragment() {
                     right_counter++
                     counter++
                     txtRight.text = "Jumlah Benar : $right_counter"
-                    NBackAddData(System.currentTimeMillis(), 1)
+                    NBackAddData(System.currentTimeMillis(), 1, 1)
                 } else {
                     //TODO : Simpan Salah
                     counter++
-                    NBackAddData(System.currentTimeMillis(), -1)
+                    NBackAddData(System.currentTimeMillis(), -1, 1)
                 }
             }
 
@@ -138,9 +138,10 @@ class NBack1 : Fragment() {
 
     }
 
-    private fun NBackAddData(timestamp: Long, data: Int){
+    private fun NBackAddData(timestamp: Long, data: Int, testCode: Int){
         var nback = NBack(timestamp)
         nback.value = data
+        nback.testCode = testCode
         NBackData.add(nback)
     }
 }

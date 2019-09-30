@@ -3,6 +3,7 @@ package com.hepicar.listeneverything
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
+import android.os.Parcelable
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -27,13 +28,15 @@ class NBack2 : Fragment() {
     companion object {
         const val NAME = "name"
         const val STATE = "state"
+        const val LIST = "list"
 
-        fun newInstance(name: String, state : String): NBack2 {
+        fun newInstance(name: String, state : String, dataList: MutableList<NBack>): NBack2 {
             val fragment = NBack2()
 
             val bundle = Bundle().apply {
                 putString(NAME, name)
                 putString(STATE, state)
+                putParcelableArrayList(LIST, dataList as ArrayList<out Parcelable>?)
             }
             fragment.arguments = bundle
             return fragment
@@ -52,7 +55,7 @@ class NBack2 : Fragment() {
         return view
     }
 
-    var NBackData : MutableList<NBack> = ArrayList()
+    var NBackData : MutableList<NBack> = arguments?.getParcelableArrayList<NBack>(LIST)!!.toMutableList()
 
     private fun Calculate(view:View, name: String, state: String){
 
@@ -81,11 +84,11 @@ class NBack2 : Fragment() {
                     right_counter++
                     counter++
                     txtRight2.text = "Jumlah Benar : $right_counter"
-                    NBackAddData(System.currentTimeMillis(), 1)
+                    NBackAddData(System.currentTimeMillis(), 1, 2)
                 } else {
                     //TODO : Simpan Salah
                     counter++
-                    NBackAddData(System.currentTimeMillis(), -1)
+                    NBackAddData(System.currentTimeMillis(), -1, 2)
                 }
             }
             if(counter == Nback_Task.size){
@@ -114,11 +117,11 @@ class NBack2 : Fragment() {
                     right_counter++
                     counter++
                     txtRight2.text = "Jumlah Benar : $right_counter"
-                    NBackAddData(System.currentTimeMillis(), 1)
+                    NBackAddData(System.currentTimeMillis(), 1, 2)
                 } else {
                     //TODO : Simpan Salah
                     counter++
-                    NBackAddData(System.currentTimeMillis(), -1)
+                    NBackAddData(System.currentTimeMillis(), -1, 2)
                 }
             }
             if(counter == Nback_Task.size){
@@ -136,9 +139,10 @@ class NBack2 : Fragment() {
         }
     }
 
-    private fun NBackAddData(timestamp: Long, data: Int){
+    private fun NBackAddData(timestamp: Long, data: Int, testCode: Int){
         var nback = NBack(timestamp)
         nback.value = data
+        nback.testCode = testCode
         NBackData.add(nback)
     }
 }
