@@ -72,7 +72,7 @@ class NBack1 : Fragment() {
             if(counter < 1){
                 counter += 1
                 txtNBack.text = Nback_Task[counter]
-                NBackAddData(System.currentTimeMillis(), 0, 1)
+                NBackAddData(System.currentTimeMillis(), 0)
             } else {
                 val temp = txtNBack.text
                 if (temp == Nback_Task[counter - 1]) {
@@ -90,13 +90,13 @@ class NBack1 : Fragment() {
 
             if(counter == Nback_Task.size){
                 //TODO : Fragment Selanjutnya
-//                if(state == "0"){
-//                    LocalStorage.saveToCSVNBack(NBackData, "nback1_training", name)
-//                } else{
-//                    LocalStorage.saveToCSVNBack(NBackData, "nback1_$state", name)
-//                }
-//                NBackData.clear()
-                activity!!.supportFragmentManager.beginTransaction().replace(R.id.fragment_nback, NBack2.newInstance(name, state, NBackData)).commit()
+                if(state == "0"){
+                    LocalStorage.saveToCSVNBack(NBackData, "nback1_training", name)
+                } else{
+                    LocalStorage.saveToCSVNBack(NBackData, "nback1_$state", name)
+                }
+                NBackData.clear()
+                activity!!.supportFragmentManager.beginTransaction().replace(R.id.fragment_nback, States.newInstance(name, state, "1")).commit()
             } else {
                 txtNBack.text = Nback_Task[counter]
             }
@@ -106,7 +106,7 @@ class NBack1 : Fragment() {
             if(counter < 1){
                 counter+=1
                 txtNBack.text = Nback_Task[counter]
-                NBackAddData(System.currentTimeMillis(), 0, 1)
+                NBackAddData(System.currentTimeMillis(), 0)
             } else {
                 val temp = txtNBack.text
                 if (temp != Nback_Task[counter - 1]) {
@@ -124,13 +124,13 @@ class NBack1 : Fragment() {
 
             if(counter == Nback_Task.size){
                 //TODO : Fragment Selanjutnya
-//                if(state == "0"){
-//                    LocalStorage.saveToCSVNBack(NBackData, "nback1_training", name)
-//                } else{
-//                    LocalStorage.saveToCSVNBack(NBackData, "nback1_$state", name)
-//                }
-//                NBackData.clear()
-                activity!!.supportFragmentManager.beginTransaction().replace(R.id.fragment_nback, NBack2.newInstance(name, state, NBackData)).commit()
+                if(state == "0"){
+                    LocalStorage.saveToCSVNBack(NBackData, "nback1_training", name)
+                } else{
+                    LocalStorage.saveToCSVNBack(NBackData, "nback1_$state", name)
+                }
+                NBackData.clear()
+                activity!!.supportFragmentManager.beginTransaction().replace(R.id.fragment_nback, States.newInstance(name, state, "1")).commit()
             } else {
                 txtNBack.text = Nback_Task[counter]
             }
